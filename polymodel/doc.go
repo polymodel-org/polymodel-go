@@ -5,14 +5,19 @@
 // PolyModel defines canonical data models once and projects them into many
 // storage, transport, and language targets. See https://polymodel.org.
 //
-// Planned core concepts (see ROADMAP.md; NOT yet implemented):
+// Core concepts (v0):
 //
-//   - Field      — atomic typed value with constraints
-//   - Component  — reusable group of fields (composition; no identity)
-//   - Entity     — logical, identity-bearing business object (the semantic anchor)
-//   - Recordset  — a row shape (query / stored-procedure output); no storage, no identity
-//   - Collection — a persistent container of records: a Table or a View
+//   - Property   — an Entity attribute: the canonical, semantic definition
+//   - Field      — a Collection attribute: loose, schemaless-capable
+//   - Column     — a Recordset attribute: strict and tabular
+//   - Component  — a reusable group of fields (Entities only in v0)
+//   - Entity     — a logical, identity-bearing business object (the semantic anchor)
+//   - Collection — a named, FROM-able data source (Kind: Editable | Computed)
+//   - Recordset  — the tabular shape of a query / stored-procedure result
 //
-// This package is experimental and pre-v0. The API will change as the spec and
-// the core concept model settle.
+// v0 provides the in-memory model (model.go), HCL parsing (hcl.go, Decision D-0004),
+// and structural + reference + constraint validation with located errors
+// (validate.go). The query body is held behind an opaque seam (Decision D-0003).
+//
+// This package is experimental and pre-v0; the API will change as the spec settles.
 package polymodel
